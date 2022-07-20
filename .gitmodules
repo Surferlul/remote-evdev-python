@@ -1,0 +1,3 @@
+[submodule "remote-evdev"]
+	path = remote-evdev
+	url = https://github.com/Surferlul/remote-evdev
