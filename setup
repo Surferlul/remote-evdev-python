@@ -1,0 +1,18 @@
+#!/bin/sh
+
+PYTHON="$(whatis -w 'python3.1*' | cut -d " " -f1)"
+PIP="$PYTHON -m pip"
+$PIP install remote-evdev
+if [ -z ${var+x} ]; then
+	cp vm_guest_example.sh guest
+	cp vm_host_example.sh host
+	$PYTHON ./test-evdev.py
+else if [[ "$1" == "guest" ]]; then
+	cp vm_guest_example.sh guest
+	$PYTHON ./test-evdev.py guest
+else if [[ "$1" == "host" ]]; then
+	cp vm_host_example.sh host
+	$PYTHON ./test-evdev.py host
+else
+	echo "unknown argument $1"
+fi; fi; fi
