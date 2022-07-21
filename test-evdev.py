@@ -1,30 +1,20 @@
 #!/usr/bin/env python3
 
 import evdev
-from evdev import InputDevice, UInput
 import sys
+import glob
 
 
 def test_uinput():
-    uinput = UInput(
-        events={
-            1: [272, 325, 328, 330, 333, 334, 335],
-            3: [
-                [0, [1386, 0, 3679, 0, 0, 31]],
-                [1, [995, 0, 2261, 0, 0, 31]],
-                [47, [0, 0, 4, 0, 0, 0]],
-                [53, [0, 0, 3679, 0, 0, 31]],
-                [54, [0, 0, 2261, 0, 0, 31]],
-                [55, [0, 0, 2, 0, 0, 0]],
-                [57, [0, 0, 65535, 0, 0, 0]]],
-            4: [5]
-        },
-        name="test_touchpad")
-    uinput.syn()
+    _uinput = evdev.UInput({}, name="test")
 
 
 def test_input_device():
-    _devices = [InputDevice(path) for path in evdev.list_devices()]
+    possible_devices = glob.glob("/dev/input/event*")
+    devices = evdev.list_devices()
+    for device in possible_devices:
+        if device not in devices:
+            print(f"Missing permissions for {device}")
 
 
 def main():
