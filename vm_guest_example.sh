@@ -14,4 +14,4 @@
 #      Magnification: 1.0
 #      -> continuously refreshes screen (i think?) to remove mouse stutter
 # Guest OS firewall might need to be tinkered with
-sudo ./main.py --guest --server --ip-address 0.0.0.0
+./main.py --guest --server --ip-address 0.0.0.0
