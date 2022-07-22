@@ -1,7 +1,6 @@
 #!/bin/sh
 
-git submodule init remote-evdev
-git submodule update remote-evdev
+git clone https://github.com/Surferlul/remote-evdev
 PYTHON="$(whatis -w 'python3.1*' | cut -d " " -f1)"
 PIP="$PYTHON -m pip"
 $PIP install wheel
